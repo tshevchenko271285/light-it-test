@@ -15,7 +15,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="music-search">
-						<form action="#">
+						<form action="#" v-on:submit.prevent >
 							<input type="text" v-model="searchString" placeholder="Search">
 							<i class="fas fa-search"></i>
 						</form>
@@ -26,7 +26,7 @@
 		<!-- START MUSIC LIST -->
 		<div class="container">
 			<div class="row">
-				<div class="col-12">
+				<div class="col-12 px-0 px-sm-3">
 					<!-- START LIST OUTPUT -->
 					<div class="music-list">
 						<!-- HEADERS LIST -->
@@ -39,9 +39,10 @@
 							<div class="music-item_btn"></div>
 						</div><!-- HEADERS LIST -->						
 						<!-- START ITEM LIST -->
+						
 						<div v-for="(item, index) in list[0]" class="music-item">
 							<div v-on:click="opened(index)" class="music-item_header">
-								<div class="music-item_image"><img :src="item.сollectionImage" alt=""></div>
+								<div class="music-item_image"><img :src="item.сollectionImage" :alt="item.collectionName" class="d-none d-lg-inline img-fluid"></div>
 								<div class="music-item_artist">{{item.artist}}</div>
 								<div class="music-item_track">{{item.track}}</div>
 								<div class="music-item_collection">{{item.collectionName}}</div>
@@ -52,11 +53,12 @@
 								</div>
 							</div>
 							<div v-if="item.open" class="music-item_body">
+								<div class="music-item_image"><img :src="item.сollectionImage" :alt="item.collectionName" class="d-inline d-lg-none img-fluid"></div>
 								<div class="music-item_big-section">
 									<h3> {{item.artist}} - {{item.track}} <i class="fas fa-music"></i></h3>
 									<p><b>Collection:</b> {{item.collectionName}} </p>
 									<p><b>Track Count:</b> {{item.trackCount}} </p>
-									<p><b>Price:</b> {{item.price}} </p>
+									<p><b>Price:</b> {{item.price}}$</p>
 								</div>
 								<div class="music-item_big-section">
 									<p><b>Track Duration:</b> {{item.trackDuration | time }} min</p>

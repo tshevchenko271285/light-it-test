@@ -1,10 +1,21 @@
 'use strict';
 
+// FILTER CONVERTS TIME MIN\SEC
 Vue.filter('time', function(value){
 	let date = new Date(value);
-	return date.getMinutes() + ' : ' + date.getSeconds();
+
+	let min = date.getMinutes().toString();
+	if (min.length === 1) { 
+		min = '0'+min;
+	}
+	let sec = date.getSeconds().toString();
+	if (sec.length === 1) {
+		sec = '0'+sec;
+	}
+	return min + ' : ' + sec;
 });
 
+// CREATE VUE APP
 new Vue ({
 	el: '#music',
 	data: {
@@ -13,21 +24,24 @@ new Vue ({
 		timeout: '',
 	},
 	watch: {
+		// OBSERVE THE SEARCH FORM
 		searchString: function (newQuestion, oldQuestion) {
 			clearTimeout(this.timeout);
-			this.timeout = setTimeout( _ => this.getData(newQuestion), 1000 );
+			this.timeout = setTimeout( () => { 
+				// EXECUTING THE QUERY
+				this.getData(newQuestion);
+			}, 1000 );
 		}
 	},
 	methods: {
+		// WE GET THE DATA FROM THE SERVER
 		getData: function (str){
-			console.log('x');
-			let vm = this;
-			var items = [];
-			fetch('https://itunes.apple.com/search?term=' + str)
-			.then(function(response){
-				return response.json();
-			}).then(function(data){
-				items.push(data.results.map(function(item){
+			fetch('https://itunes.apple.com/search?term=' + str + '&limit=10')
+			.then( response => response.json() )
+			.then( data => {
+				this.list = [];
+				// SELECT THE REQUIRED DATA
+				this.list.push(data.results.map(item => {
 					return {
 						сollectionImage: item.artworkUrl100,
 						artist: item.artistName,
@@ -45,8 +59,8 @@ new Vue ({
 			.catch(function(error){
 				console.warn(error);
 			});
-			this.list = items;
 		},
+		// ACCORDION TOGGLE
 		opened: function(index) {
 			if (this.list[0][index].open)  {
 				this.list[0][index].open = false;
