@@ -39,33 +39,13 @@
 							<div class="music-item_btn"></div>
 						</div><!-- HEADERS LIST -->						
 						<!-- START ITEM LIST -->
-						
-						<div v-for="(item, index) in list[0]" class="music-item">
-							<div v-on:click="opened(index)" class="music-item_header">
-								<div class="music-item_image"><img :src="item.сollectionImage" :alt="item.collectionName" class="d-none d-lg-inline img-fluid"></div>
-								<div class="music-item_artist">{{item.artist}}</div>
-								<div class="music-item_track">{{item.track}}</div>
-								<div class="music-item_collection">{{item.collectionName}}</div>
-								<div class="music-item_genre">{{item.ganre}}</div>
-								<div class="music-item_btn">
-									<i v-if="item.open" class="fas fa-minus"></i>
-									<i v-else class="fas fa-plus"></i>
-								</div>
-							</div>
-							<div v-if="item.open" class="music-item_body">
-								<div class="music-item_image"><img :src="item.сollectionImage" :alt="item.collectionName" class="d-inline d-lg-none img-fluid"></div>
-								<div class="music-item_big-section">
-									<h3> {{item.artist}} - {{item.track}} <i class="fas fa-music"></i></h3>
-									<p><b>Collection:</b> {{item.collectionName}} </p>
-									<p><b>Track Count:</b> {{item.trackCount}} </p>
-									<p><b>Price:</b> {{item.price}}$</p>
-								</div>
-								<div class="music-item_big-section">
-									<p><b>Track Duration:</b> {{item.trackDuration | time }} min</p>
-									<p><b>Track Price:</b> {{item.trackPrice}}$</p>
-								</div>
-							</div>
-						</div><!-- END ITEM LIST -->
+						<list-item 
+							v-for="(item, index) in list[0]" 
+							v-bind:item="item"
+							v-bind:index="index"
+							v-bind:list="list[0]"
+							v-on:closed="closed"
+						></list-item><!-- END ITEM LIST -->
 					</div><!-- END LIST OUTPUT -->
 				</div>
 			</div>
