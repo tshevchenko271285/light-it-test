@@ -1,0 +1,120 @@
+body {
+	background: #eef7ff;
+}
+.music {
+	font-family: Georgia;
+}
+/**
+**	MUSIC SEARCH
+*/
+.music-search {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.music-search form {
+	margin-top: 25px;
+	width: 350px;
+	position: relative;
+	border-radius: 5px;
+	background: #ffffff;
+}
+.music-search form input[type="text"]:active, 
+.music-search form input[type="text"]:hover, 
+.music-search form input[type="text"]:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+.music-search form input[type="text"] {
+	font-family: Georgia;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	font-size: 13px;
+	padding: 10px 15px;
+	border: 1px solid #bbbbbb;
+	border-radius: 5px;
+	background: transparent;
+}
+.music-search form i {
+	position: absolute;
+	z-index: 0;
+	top: 0;
+	right: 0px;
+	width: 45px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #47515b;
+	border-radius: 0 5px 5px 0;
+	background: #f3f3f3;
+}
+
+/**
+**	MUSIC LIST
+*/
+.music-list {
+	margin-top: 60px;
+}
+.music-item {
+	padding: 15px;
+}
+.music-item:nth-child(even) {
+	background: #ccdff0;
+}
+.music-list-header {
+	display: flex;
+	margin-bottom: 20px;
+}
+.music-item_header {
+	display: flex;
+	flex-wrap: wrap;
+}
+.music-item_header:hover {
+	cursor: pointer;
+}
+.music-item_body {
+	display: flex;
+	align-items: flex-end;
+	padding-left: 15%;
+}
+.music-item_image img {
+	border: 3px solid #011180;
+}
+.music-item_artist { }
+.music-item_track { }
+.music-item_collection { }
+.music-item_genre { }
+.music-item_btn i {
+	font-size: 30px;
+}
+.music-item_big-section {
+	width: 40%;
+}
+.music-item_big-section p {
+	margin-bottom: 0;
+}
+.music-item_big-section h3 {
+	color: #42494f;
+}
+.music-item_big-section h3 i {
+	color: #908f8d;
+}
+.music-item_image {
+	width: 15%
+}
+.music-item_btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width:5%;
+}
+.music-item_artist,
+.music-item_track,
+.music-item_collection,
+.music-item_genre {
+	display: flex;
+	align-items: center;
+	width: 20%;
+}

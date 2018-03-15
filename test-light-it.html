@@ -8,20 +8,20 @@
 	<h2>Test task for Light It</h2>
 	<h4>Result in console</h4>
 <script>
-	var arr = [1, 6, 5, 2, 7, 5, 1, 4, 3, '2 monkeys :))'];
+	var arr = [1, 6, 5, 2, 7, 5, 1, 4, 3, -1, '2 monkeys :))'];
 	var y = 5;
 
 	testLightIt(arr, y);
-	
+
 	function testLightIt(arr, y) {
 		var result = [];
-		arr.forEach(function(item, i, arr) {
-			arr.forEach( function(inItem, i, arr){
+		arr.forEach(function(item, index, arr) {
+			arr.forEach( function(inItem, inIndex, arr){
 				// If the current value is greater than the 
 				// specified value or the values is not a number
-				if( item > y || isNaN(item) || isNaN(inItem)) return;
+				if( item > y || isNaN(item) || isNaN(inItem) ) return;
 				// Not with myself
-				if( item == inItem ) return;
+				if( index == inIndex ) return;
 				// If the sum is equal to the given
 				if( (item + inItem) === y ) {
 					// Verification as a result

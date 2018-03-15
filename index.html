@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Light It, Level 2</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="music" class="music">
+		<!-- START SEARCH FIELD -->
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="music-search">
+						<form action="#">
+							<input type="text" v-model="searchString" placeholder="Search">
+							<i class="fas fa-search"></i>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!-- END SEARCH FIELD -->
+		<!-- START MUSIC LIST -->
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<!-- START LIST OUTPUT -->
+					<div class="music-list">
+						<!-- HEADERS LIST -->
+						<div class="music-list-header">
+							<div class="music-item_image"></div>
+							<div class="music-item_artist">Artist</div>
+							<div class="music-item_track">Track</div>
+							<div class="music-item_collection">Collection</div>
+							<div class="music-item_genre">Genre</div>
+							<div class="music-item_btn"></div>
+						</div><!-- HEADERS LIST -->						
+						<!-- START ITEM LIST -->
+						<div v-for="(item, index) in list[0]" class="music-item">
+							<div v-on:click="opened(index)" class="music-item_header">
+								<div class="music-item_image"><img :src="item.сollectionImage" alt=""></div>
+								<div class="music-item_artist">{{item.artist}}</div>
+								<div class="music-item_track">{{item.track}}</div>
+								<div class="music-item_collection">{{item.collectionName}}</div>
+								<div class="music-item_genre">{{item.ganre}}</div>
+								<div class="music-item_btn">
+									<i v-if="item.open" class="fas fa-minus"></i>
+									<i v-else class="fas fa-plus"></i>
+								</div>
+							</div>
+							<div v-if="item.open" class="music-item_body">
+								<div class="music-item_big-section">
+									<h3> {{item.artist}} - {{item.track}} <i class="fas fa-music"></i></h3>
+									<p><b>Collection:</b> {{item.collectionName}} </p>
+									<p><b>Track Count:</b> {{item.trackCount}} </p>
+									<p><b>Price:</b> {{item.price}} </p>
+								</div>
+								<div class="music-item_big-section">
+									<p><b>Track Duration:</b> {{item.trackDuration | time }} min</p>
+									<p><b>Track Price:</b> {{item.trackPrice}}$</p>
+								</div>
+							</div>
+						</div><!-- END ITEM LIST -->
+					</div><!-- END LIST OUTPUT -->
+				</div>
+			</div>
+		</div><!-- END MUSIC LIST -->
+	</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.15/vue.min.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>	
